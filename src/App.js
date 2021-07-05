@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import CharacterCard from './CharacterCard';
 
 function App() {
   return (
     <div className="App">
-      hello world
+      <CharacterCard value='H'></CharacterCard>
+      <CharacterCard value='I'></CharacterCard>
     </div>
   );
 }
