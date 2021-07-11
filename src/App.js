@@ -6,7 +6,7 @@ const word = "Hello";
 function App() {
   return (
     <div className="App">
-      <Wordcard value={word}/>
+      <Wordcard value1={word}/>
     </div>
   );
 }
