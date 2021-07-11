@@ -14,32 +14,33 @@ const prepareStateFromWord = (given_word) => {
     }
 }
 
+const prepareStateFromText = (given_text) => {
+    let text = given_text.toUpperCase()
+    let chars1 = _.shuffle(Array.from(text))
+    return {
+        text,
+        chars1,
+    }
+}
+
 
 export default function Wordcard(props){
     const [state ,setState] = useState(prepareStateFromWord(props.value))
+    const [states , setStates] = useState(prepareStateFromText(props.value))
 
     const activationHandler = (c) => {
-        console.log(`${'H'} has been activated.`)
-        let guess = state.guess + c
-        setState({...state, guess}) 
-        if(guess.length == state.word.length){ 
-            if(guess == state.word){
-                alert('yeah!')
-                setState({...state, guess: '', completed: true})
-            }else{
-                alert('reset')
-                setState({...state, guess: '', attempt: state.attempt + 1})
-            }
-        }
+        console.log(`${c} has been activated.`)
     }
 
-
+    const activationHandler2 = (c) => {
+        console.log(`${c} has been activated.`)
+    }
     return (
         <div>
             {
                 state.chars.map((c,i) =><CharacterCard value={c} key={i} activationHandler={activationHandler} attempt={state.attempt}>
-                </CharacterCard>)
-                
+                </CharacterCard>),
+                states.chars1.map((c,i) =><CharacterCard vals={c} key={i} activationHandler2={activationHandler2} ></CharacterCard>)            
             }
         </div>
         
